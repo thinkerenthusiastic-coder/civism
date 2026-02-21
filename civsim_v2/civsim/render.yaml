@@ -3,5 +3,8 @@ services:
     name: civsim
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app:app --host 0.0.0.0 --port 10000
-    plan: free
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    disk:
+      name: civsim-state
+      mountPath: /var/data
+      sizeGB: 1
